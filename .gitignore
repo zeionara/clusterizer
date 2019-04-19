@@ -1,4 +1,5 @@
 *
 !.gitignore
 !*.py
+!/docs/**
 *_old.py
