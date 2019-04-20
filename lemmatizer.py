@@ -9,8 +9,9 @@ NUMBER_OF_DOCUMENTS_TO_EXTRACT = 800000
 STEP_TO_LOG = 0.05 # percents
 WHOLE_SIZE = 700000	# articles
 
-def log(message):
-	print(f'[{datetime.datetime.now().time()}] ' + message)
+def log(message, verbose = True):
+	if verbose:
+		print(f'[{datetime.datetime.now().time()}] ' + message)
 
 def log_percents(percents):
 	log(f'{percents:.2f}% completed')

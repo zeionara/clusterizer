@@ -21,13 +21,13 @@ results = {}
 
 # helping functions
 
-def mkdir(dir_name):
+def mkdir(dir_name, verbose):
 	try:
 		os.mkdir(dir_name)
 	except OSError:
-		print(f'Error creating directory {dir_name}')
+		log(f'Error creating directory {dir_name}', verbose)
 	else:
-		print(f'Directory {dir_name} successfully created')
+		log(f'Directory {dir_name} successfully created', verbose)
 
 def read_file(filename):
 	result = []
@@ -41,6 +41,7 @@ def write_file_with_labels(filename, documents, labels):
 
 def write_files_with_labels(out_folder, out_filename, documents, labels):
 	mkdir(out_folder)
+	print(labels)
 	for i in range(np.amax(labels) + 1):
 		documents_to_write = []
 		for j in range(len(documents)):

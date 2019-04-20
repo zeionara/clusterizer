@@ -11,7 +11,7 @@ import os
 
 from lemmatizer import log
 
-RESULTS_FOLDER = '/mnt/c/Users/prote/big_data/results_10k'
+RESULTS_FOLDER = '/mnt/c/Users/prote/big_data/results/test_resultsss_600'
 OUTPUT_FILE = '/mnt/c/Users/prote/big_data/final.txt'
 # helping functions
 

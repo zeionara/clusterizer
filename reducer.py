@@ -12,8 +12,8 @@ import time
 
 from lemmatizer import log
 
-FILENAME_IN = '/mnt/c/Users/prote/big_data/without_stop_words_20k.txt'
-FILENAME_OUT = '/mnt/c/Users/prote/big_data/reduced_without_stop_words_20k.txt'
+FILENAME_IN = '/mnt/c/Users/prote/big_data/reduced_without_stop_words_2k.txt'
+FILENAME_OUT = '/mnt/c/Users/prote/big_data/rr_without_stop_words_2k.txt'
 
 # helping functions
 
@@ -57,7 +57,7 @@ def apply_reduced_vocabulary(reduced_vocabulary, documents):
 
 def main():
 	vectorizer, numberized, file_content = numberize_tfidf(FILENAME_IN)
-	reduced_vocabulary = get_terms_with_tfidf_higher_than_mean(vectorizer, numberized);
+	reduced_vocabulary = get_terms_with_top_tfidf(vectorizer, numberized, 0.002);
 	write_file(FILENAME_OUT, apply_reduced_vocabulary(reduced_vocabulary, file_content))
 
 if __name__ == "__main__":
