@@ -16,3 +16,6 @@ def print_keywords(model, vectorizer):
 def log_finishing_builing_model(model, verbose):
 	if verbose:
 		log(f'Finished building {model.name} model', verbose)
+
+def log_percents(percents, verbose = False):
+	log(f'{percents:.2f}% completed', verbose)

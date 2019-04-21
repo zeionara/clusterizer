@@ -1,5 +1,5 @@
 from gensim.models.doc2vec import TaggedDocument, Doc2Vec
-from filesystem import read_file
+from clusterizer.filesystem import read_file
 import numpy as np
 
 

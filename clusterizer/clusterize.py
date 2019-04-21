@@ -4,12 +4,13 @@ import numpy as np
 import os, argparse
 from collections import namedtuple
 
-from loggers import log, log_finishing_builing_model
-from filesystem import mkdir, read_file, write_file, write_files_with_labels, output_results, output_general_results
-from numberizing import numberize_tfidf, numberize_hash
-from clusterizing import clusterize_kmeans, clusterize_affinity_propagation, clusterize_spectrally
-from embedding import get_embeddings
-from plotting import output_plot
+from clusterizer.loggers import log, log_finishing_builing_model
+from clusterizer.filesystem import mkdir, read_file, write_file, write_files_with_labels, output_results, output_general_results
+from clusterizer.numberizing import numberize_tfidf, numberize_hash
+from clusterizer.clusterizing import clusterize_kmeans, clusterize_affinity_propagation, clusterize_spectrally
+from clusterizer.embedding import get_embeddings
+from clusterizer.plotting import output_plot
+from clusterizer.performance import measure
 
 import time
 
@@ -65,6 +66,7 @@ def stage_intermediate_results(models, numberized, file_content, results, number
 		mkdir(f'{graphics_folder}_{dimensions}', verbose)
 		output_plot(f'{graphics_folder}_{dimensions}/{graphics_file}_{number_of_clusters}_clusters', models, numberized)
 
+@measure()
 def main():
 	args = parse_args()
 	general_results = {}

@@ -1,8 +1,8 @@
 from sklearn.feature_extraction.text import TfidfVectorizer, HashingVectorizer
-from filesystem import read_file
+from clusterizer.filesystem import read_file
 
-def numberize_tfidf(filename):
-	vectorizer = TfidfVectorizer()
+def numberize_tfidf(filename, max_features = None):
+	vectorizer = TfidfVectorizer(max_features = max_features)
 	file_content = read_file(filename)
 	return vectorizer, vectorizer.fit_transform(file_content), file_content
 

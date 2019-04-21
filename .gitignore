@@ -1,5 +1,6 @@
 *
 !.gitignore
 !*.py
-!/docs/**
+!/docs
+!/clusterizer
 *_old.py
