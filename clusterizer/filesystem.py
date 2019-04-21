@@ -36,18 +36,18 @@ def write_files_with_labels(out_folder, out_filename, documents, labels, verbose
 				documents_to_write.append(documents[j])
 		write_file(f'{out_folder}/{out_filename}_{i}.txt', documents_to_write)
 
-def output_results(results, filename):
+def output_results(results, filename, metric_name):
 	lines_to_write = []
 	counter = 0
 	for number_of_clusters in results:
-		output_string = '\t'.join([str(results[number_of_clusters][method]) for method in results[number_of_clusters]]).replace('.',',')
+		output_string = '\t'.join([str(results[number_of_clusters][method][metric_name]) for method in results[number_of_clusters]]).replace('.',',')
 		if counter <= 0:
 			lines_to_write.append('\t'.join([method for method in results[number_of_clusters]]))
 			counter += 1
 		lines_to_write.append(output_string)
 	write_file(filename, [line_to_write + '\n' for line_to_write in lines_to_write])
 
-def output_general_results(results, filename):
+def output_general_results(results, filename, metric_name):
 	lines_to_write = {}
 	extra_output_strings = []
 	for vector_size in results:
@@ -57,7 +57,10 @@ def output_general_results(results, filename):
 				extra_output_strings.append('\t'.join([f'{method}_{vector_size}d' for method in results[vector_size][number_of_clusters]]))
 				counter += 1
 			
-			output_string = '\t'.join([str(results[vector_size][number_of_clusters][method]) for method in results[vector_size][number_of_clusters]]).replace('.',',')
+			output_string = '\t'.join([
+				str(results[vector_size][number_of_clusters][method][metric_name]) 
+				for method in results[vector_size][number_of_clusters]
+			]).replace('.',',')
 
 			if not lines_to_write.get(number_of_clusters):
 				lines_to_write[number_of_clusters] = [str(number_of_clusters), output_string]
